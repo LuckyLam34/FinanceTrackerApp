@@ -10,6 +10,7 @@ export class AuthService {
   ) { }
 
   userInfo: any;
+  tokenId;
 
   loginWithEmail(email, password) {
     this.afAuth
@@ -33,8 +34,10 @@ export class AuthService {
   }
 
   hasValidToken() {
-    const tokenId = this.localStorageService.getToken();
-
-    return tokenId ? true : false;
+    if (this.tokenId) {
+      return true;
+    }
+    this.tokenId = this.localStorageService.getToken();
+    return this.tokenId ? true : false;
   }
 }
