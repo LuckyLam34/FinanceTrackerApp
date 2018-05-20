@@ -8,27 +8,49 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { LoginPage } from '../pages/login/login';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ServicesModule } from '../services/services.module';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyBm5worX8Gn_NwJlNnAiQOGMiOMajmgdDA",
+  authDomain: "finance-tracker-37d95.firebaseapp.com",
+  databaseURL: "https://finance-tracker-37d95.firebaseio.com",
+  projectId: "finance-tracker-37d95",
+  storageBucket: "finance-tracker-37d95.appspot.com",
+  messagingSenderId: "849177310682"
+};
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    ServicesModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    AngularFireDatabase,
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }
