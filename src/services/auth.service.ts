@@ -1,12 +1,16 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "angularfire2/auth";
 import { LocalStorageService } from "./local-storage.service";
+import { App } from "ionic-angular";
+import { HomePage } from "../pages/home/home";
+import { LoginPage } from "../pages/login/login";
 
 @Injectable()
 export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private app: App
   ) { }
 
   userInfo: any;
@@ -18,19 +22,26 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then(value => {
         this.afAuth.authState.subscribe(value => {
-          this.userInfo = value;
-          this.afAuth.auth.currentUser.getIdToken(true).then((token) => {
-            this.localStorageService.setToken(token);
-          })
+          if (value) {
+            this.userInfo = value;
+            this.afAuth.auth.currentUser.getIdToken(true).then((token) => {
+              this.localStorageService.setToken(token);
+              this.app.getRootNav().setRoot(HomePage);
+            });
+          } else {
+            this.localStorageService.setToken('');
+            this.app.getRootNav().setRoot(LoginPage)
+          }
         });
       })
-      .catch(error => console.log(error));
+      .catch(error => alert(error.message));
   }
 
   logout() {
     this.afAuth
       .auth
-      .signOut();
+      .signOut().then(() => {
+      });
   }
 
   hasValidToken() {

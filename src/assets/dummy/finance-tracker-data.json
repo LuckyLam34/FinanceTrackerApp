@@ -1,0 +1,38 @@
+{
+  "users": {
+    "user1": {
+      "personalInfo": {
+        "firstName": "Lucky",
+        "lastName": "Lam",
+        "email": "trinhtulam34@gmail.com"
+      },
+      "spendingRecords": {
+        "spendingRecord1": {
+          "date": "11052018",
+          "month": "May",
+          "year": "2018",
+          "type": "typeCafe",
+          "name": "Flygarden",
+          "expense": 50000
+        }
+      },
+      "moneyMonthlySpentOfYear": {
+        "p1": {
+          "May": 5000000,
+          "year": 2017
+        },
+        "p2": {
+          "July": 6000000,
+          "year": 2017
+        }
+      }
+    }
+  },
+  "types": {
+    "typeEntertainment": "Entertainment",
+    "typeFoodAndDrink": "Food and drink",
+    "typeSupermarket": "Supermarket",
+    "typeCafe": "Cafe",
+    "typeOther": "Other"
+  }
+}
