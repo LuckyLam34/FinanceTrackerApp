@@ -8,5 +8,6 @@
 </ion-header>
 
 <ion-content padding>
-  <div id="event-calendar"></div>
+  <calendar [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" step="30">
+  </calendar>
 </ion-content>

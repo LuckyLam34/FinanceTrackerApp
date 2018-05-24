@@ -15,6 +15,9 @@ import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/dat
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ServicesModule } from '../services/services.module';
 
+import { NgCalendarModule } from 'ionic2-calendar';
+
+
 export const firebaseConfig = {
   apiKey: "AIzaSyBm5worX8Gn_NwJlNnAiQOGMiOMajmgdDA",
   authDomain: "finance-tracker-37d95.firebaseapp.com",
@@ -37,7 +40,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    ServicesModule
+    ServicesModule,
+    NgCalendarModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
