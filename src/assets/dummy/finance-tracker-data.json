@@ -11,7 +11,7 @@
           "date": "11052018",
           "month": "May",
           "year": "2018",
-          "type": "typeCafe",
+          "category": "categoryCafe",
           "name": "Flygarden",
           "expense": 50000
         }
@@ -28,11 +28,11 @@
       }
     }
   },
-  "types": {
-    "typeEntertainment": "Entertainment",
-    "typeFoodAndDrink": "Food and drink",
-    "typeSupermarket": "Supermarket",
-    "typeCafe": "Cafe",
-    "typeOther": "Other"
+  "categories": {
+    "categoryEntertainment": "Entertainment",
+    "categoryFoodAndDrink": "Food and drink",
+    "categorySupermarket": "Supermarket",
+    "categoryCafe": "Cafe",
+    "categoryOther": "Other"
   }
 }
