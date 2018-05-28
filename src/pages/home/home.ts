@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import * as moment from 'moment';
+import { AngularFireDatabase } from 'angularfire2/database/database';
 
 @Component({
   selector: 'page-home',
@@ -8,7 +9,16 @@ import * as moment from 'moment';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  categories;
+
+  constructor(
+    public navCtrl: NavController,
+    db: AngularFireDatabase) {
+    const observer = db.object('categories').valueChanges();
+    observer
+      .subscribe((categories) => {
+        this.categories = Object['values'](categories);
+      });
   }
 
   calendar = {
